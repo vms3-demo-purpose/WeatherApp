@@ -1,0 +1,43 @@
+@model List<MyWeather.Models.WeatherRecord>
+
+@{
+}
+
+<br>
+<h2>Weather Reports</h2>
+<a asp-action="Create" class="btn btn-secondary">Add Weather Predictions</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Area</th>
+            <th>Forecast</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var weather in Model)
+        {
+            <tr>
+                <td>@weather.RecordId</td>
+                <td>@weather.Area</td>
+                <td>@weather.Forecast</td>
+                <td>@weather.SqlStartTime.ToString("yyyy-MM-dd HH:m:ss")</td>
+                <td>@weather.SqlEndTime.ToString("yyyy-MM-dd HH:m:ss")</td>
+                <td>
+                    <a class="btn btn-sm btn-primary" asp-action="Update" asp-route-id="@weather.RecordId">
+                        Update
+                    </a>
+                </td>
+                <td>
+                    <form asp-action="Delete" asp-route-id="@weather.RecordId" method="post">
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

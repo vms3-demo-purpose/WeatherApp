@@ -1,0 +1,39 @@
+﻿@model WeatherRecord
+
+@{
+    ViewData["Title"] = "Change Weather Predictions";
+}
+
+<h1 class="bg-info text-white">Change Weather Predictions</h1>
+<a asp-action="Index2" class="btn btn-secondary">View All Weather Predictions</a>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="RecordId"></label>
+        <input type="text" asp-for="RecordId" readonly class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Area"></label>
+        <input type="text" asp-for="Area" class="form-control" />
+        <span asp-validation-for="Area" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Forecast"></label>
+        <input type="text" asp-for="Forecast" class="form-control" />
+        <span asp-validation-for="Forecast" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SqlStartTime"></label>
+        <input type="datetime" asp-for="SqlStartTime" class="form-control" />
+        <span asp-validation-for="SqlStartTime" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SqlEndTime"></label>
+        <input type="datetime" asp-for="SqlEndTime" class="form-control" />
+        <span asp-validation-for="SqlEndTime" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Weather Changes</button>
+</form>

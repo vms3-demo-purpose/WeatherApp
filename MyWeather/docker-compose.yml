@@ -1,0 +1,18 @@
+version: '3'
+services:
+  weather-app:
+    build: .
+    environment:
+      DatabaseServer: "db"
+      DatabasePort: "1433"
+      DatabaseUser: "SA"
+      DatabasePassword: "Passw0rd#"
+      DatabaseName: "Master"
+    ports:
+      - "7070:80"
+    networks:
+          - weather
+
+networks:
+  weather:
+    external: true
